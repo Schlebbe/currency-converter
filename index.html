@@ -16,6 +16,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="index.css">
+        <script src="myScript.js" defer></script>
     <title>Valutaomvandlare</title>
 </head>
 
@@ -31,7 +33,7 @@
 
     <div>
         <label for="buyOrSell">Köp</label>
-        <input type="radio" value="buy" name="buyOrSell">
+        <input type="radio" value="buy" name="buyOrSell" checked="checked">
         <br>
         <label for="buyOrSell">Sälj</label>
         <input type="radio" value="sell" name="buyOrSell">
@@ -44,7 +46,7 @@
             <option>Valuta 4</option>
         </select>
 
-        <input type="text">
+        <input type="text" id="currencyInput">
 
         <select id="currencyTo">
             <option>Valuta 1</option>
@@ -53,9 +55,10 @@
             <option>Valuta 3</option>
             <option>Valuta 4</option>
         </select>
-        <button>Konvertera</button>
 
-        <p id="newAmount"> </p>
+        <button id="currencyConvert">Omvandla</button>
+
+        <p id="newAmount"></p>
 </body>
 
 </html>
