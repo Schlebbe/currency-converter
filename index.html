@@ -33,27 +33,17 @@
 
     <div>
         <label for="buyOrSell">Köp</label>
-        <input type="radio" value="buy" name="buyOrSell" checked="checked">
+        <input type="radio" value="true" name="buyOrSell" checked="checked">
         <br>
         <label for="buyOrSell">Sälj</label>
-        <input type="radio" value="sell" name="buyOrSell">
+        <input type="radio" value="false" name="buyOrSell">
 
-        <select id="currencyFrom">
-            <option>Valuta 1</option>
-            <option>Valuta 2</option>
-            <!--fyll från JS-->
-            <option>Valuta 3</option>
-            <option>Valuta 4</option>
+        <select id="currencyFrom" class="currency">
         </select>
 
         <input type="text" id="currencyInput">
 
-        <select id="currencyTo">
-            <option>Valuta 1</option>
-            <option>Valuta 2</option>
-            <!--fyll från JS-->
-            <option>Valuta 3</option>
-            <option>Valuta 4</option>
+        <select id="currencyTo" class="currency">
         </select>
 
         <button id="currencyConvert">Omvandla</button>
