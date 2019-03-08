@@ -1,4 +1,5 @@
 'use strict';
+fillLists();
 
 let input = document.getElementById("currencyInput");
 input.addEventListener("keyup", Convert);
@@ -6,27 +7,16 @@ input.addEventListener("keyup", Convert);
 let currency = document.querySelectorAll(".currency");
 for (const iterator of currency) {
     iterator.addEventListener("change", Convert);
-
 }
 
-var result;
-GetData();
-
-async function GetData() {
-    let url = "https://openexchangerates.org/api/latest.json?app_id=548eceb07c57435397f105655e9f882c";
-    result = await FetchData(url);
+function fillLists() {
     let currencies = document.querySelectorAll(".currency");
+    api.getData();
+    let result = api.getCookie("rates");
 
-    //Set timer to call this method again in 1 hour???
-    let testt = JSON.stringify(result.rates);
-    sessionStorage.setItem("results", testt);
-    alert(sessionStorage.getItem("results"));
+    for (const property in result) {
+        if (result.hasOwnProperty(property)) {
 
-    for (const property in result.rates) {
-        if (result.rates.hasOwnProperty(property)) {
-            const currency = result.rates[property];
-
-            // console.log(property + " " + currency);
             let newOption = document.createElement('option');
             let textnode = document.createTextNode(property);
             newOption.appendChild(textnode);
@@ -45,13 +35,6 @@ async function GetData() {
             }
         }
     }
-    return result;
-}
-
-async function FetchData(url) {
-    let promise = await fetch(url);
-    let data = await promise.json();
-    return data;
 }
 
 function Convert() {
@@ -59,23 +42,22 @@ function Convert() {
     let currencyFrom = document.getElementById("currencyFrom").value;
     let currencyTo = document.getElementById("currencyTo").value;
     let newCurrency = document.getElementById("newCurrency");
+    let rates = api.getCookie("rates");
     let newValue;
 
-    for (const property in result.rates) {
-        if (result.rates.hasOwnProperty(property)) {
-            const currencyFromValue = result.rates[property];
+    for (const property in rates) {
+        if (rates.hasOwnProperty(property)) {
+            const currencyFromValue = rates[property];
 
             if (property == currencyFrom) {
-                // alert(currencyFromValue); //formula = x/firstrate*2ndrate
 
-                for (const key in result.rates) {
-                    if (result.rates.hasOwnProperty(key)) {
-                        const currencyToValue = result.rates[key];
+                for (const key in rates) {
+                    if (rates.hasOwnProperty(key)) {
+                        const currencyToValue = rates[key];
+
                         if (currencyInput != null && key == currencyTo) {
                             newValue = currencyInput / currencyFromValue * currencyToValue;
-                            // alert(`From ${currencyInput} ${property} to ${key}: ${newValue}`);
                             newCurrency.value = newValue;
-
                         }
                     }
                 }
