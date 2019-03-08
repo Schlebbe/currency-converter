@@ -16,8 +16,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="index.css">
-        <script src="myScript.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="myScript.js" defer></script>
     <title>Valutaomvandlare</title>
 </head>
 
@@ -31,24 +31,32 @@
         </ul>
     </nav>
 
-    <div>
-        <label for="buyOrSell">Köp</label>
+    <div class="flex-container">
+        <!-- <label for="buyOrSell">Köp</label>
         <input type="radio" value="true" name="buyOrSell" checked="checked">
         <br>
         <label for="buyOrSell">Sälj</label>
-        <input type="radio" value="false" name="buyOrSell">
+        <input type="radio" value="false" name="buyOrSell"> -->
+        <div class="flex-item">
+            <select id="currencyFrom" class="currency form-control">
+            </select>
+            <br>
+            <input type="text" id="currencyInput">
+        </div>
 
-        <select id="currencyFrom" class="currency">
-        </select>
+        <div class="arrow flex-item">&rarr;</div>
 
-        <input type="text" id="currencyInput">
+        <div class="flex-item">
+            
+            <select id="currencyTo" class="currency form-control">
+            </select>
+            <br>
+            <input type="text" id="newCurrency" disabled>
+        </div>
 
-        <select id="currencyTo" class="currency">
-        </select>
+        <!-- <button id="currencyConvert">Omvandla</button> -->
+    </div>
 
-        <button id="currencyConvert">Omvandla</button>
-
-        <p id="newAmount"></p>
 </body>
 
 </html>

@@ -1,0 +1,21 @@
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.flex-item {
+    width: 15%;
+    align-content: center;
+    flex-direction: column;
+}
+
+.arrow {
+    margin-top: -25px;
+    width: 100px;
+    font-size: 75px;
+}
+
+.currency {
+    width: 88%;
+}

@@ -1,14 +1,26 @@
-let button = document.getElementById("currencyConvert");
-button.addEventListener("click", Convert);
+'use strict';
 
-// let globalResultLmao = 
-GetData();
+let input = document.getElementById("currencyInput");
+input.addEventListener("keyup", Convert);
+
+let currency = document.querySelectorAll(".currency");
+for (const iterator of currency) {
+    iterator.addEventListener("change", Convert);
+
+}
+
 var result;
+GetData();
 
 async function GetData() {
     let url = "https://openexchangerates.org/api/latest.json?app_id=548eceb07c57435397f105655e9f882c";
     result = await FetchData(url);
     let currencies = document.querySelectorAll(".currency");
+
+    //Set timer to call this method again in 1 hour???
+    let testt = JSON.stringify(result.rates);
+    sessionStorage.setItem("results", testt);
+    alert(sessionStorage.getItem("results"));
 
     for (const property in result.rates) {
         if (result.rates.hasOwnProperty(property)) {
@@ -46,14 +58,15 @@ function Convert() {
     let currencyInput = document.getElementById("currencyInput").value;
     let currencyFrom = document.getElementById("currencyFrom").value;
     let currencyTo = document.getElementById("currencyTo").value;
-    let buyOrSell = document.getElementsByName("buyOrSell");
-    //let newValue = wjfhiuhf
+    // let buyOrSell = document.getElementsByName("buyOrSell");
+    let newCurrency = document.getElementById("newCurrency");
+    let newValue;
 
-    for (const radio of buyOrSell) {
-        if (radio.checked) {
-            buyOrSell = radio.value; //True = buy, false = sell.
-        }
-    }
+    // for (const radio of buyOrSell) {
+    //     if (radio.checked) {
+    //         buyOrSell = radio.value; //True = buy, false = sell.
+    //     }
+    // }
 
     for (const property in result.rates) {
         if (result.rates.hasOwnProperty(property)) {
@@ -67,10 +80,10 @@ function Convert() {
                         const currencyToValue = result.rates[key];
                         if (currencyInput != null && key == currencyTo) {
                             newValue = currencyInput / currencyFromValue * currencyToValue;
-                            alert(`From ${currencyInput} ${property} to ${key}: ${newValue}`);
+                            // alert(`From ${currencyInput} ${property} to ${key}: ${newValue}`);
+                            newCurrency.value = newValue;
 
                         }
-
                     }
                 }
             }
