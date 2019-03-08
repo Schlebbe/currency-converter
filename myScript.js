@@ -58,15 +58,8 @@ function Convert() {
     let currencyInput = document.getElementById("currencyInput").value;
     let currencyFrom = document.getElementById("currencyFrom").value;
     let currencyTo = document.getElementById("currencyTo").value;
-    // let buyOrSell = document.getElementsByName("buyOrSell");
     let newCurrency = document.getElementById("newCurrency");
     let newValue;
-
-    // for (const radio of buyOrSell) {
-    //     if (radio.checked) {
-    //         buyOrSell = radio.value; //True = buy, false = sell.
-    //     }
-    // }
 
     for (const property in result.rates) {
         if (result.rates.hasOwnProperty(property)) {
@@ -87,12 +80,6 @@ function Convert() {
                     }
                 }
             }
-            // alert(element);
         }
     }
-    // if (condition) {
-
-    // }
-    // let test = 
-
 }
